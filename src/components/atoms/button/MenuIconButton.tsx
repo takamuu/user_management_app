@@ -1,20 +1,21 @@
-import { memo, VFC } from "react";
-import { IconButton } from "@chakra-ui/react";
-import { HamburgerIcon } from "@chakra-ui/icons";
+import { memo, VFC } from 'react';
+import { IconButton } from '@chakra-ui/react';
+import { HamburgerIcon } from '@chakra-ui/icons';
 
 type Props = {
-  onOpen: () => void;
-}
+    onOpen: () => void;
+};
 
 export const MenuIconButton: VFC<Props> = memo((props) => {
-  const { onOpen } = props;
-  return (
-    <IconButton
-      aria-label="メニューボタン"
-      icon={<HamburgerIcon />} 
-      size="sm" variant="unstyled"
-      display={{ base: "block", md: "none" }}
-      onClick={onOpen}
-    />
-  )
-})
+    const { onOpen } = props;
+    return (
+        <IconButton
+            aria-label="メニューボタン"
+            icon={<HamburgerIcon />}
+            size="sm"
+            variant="unstyled"
+            display={{ base: 'block', md: 'none' }}
+            onClick={onOpen}
+        />
+    );
+});
