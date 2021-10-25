@@ -47,13 +47,21 @@ export const Header: VFC = memo(() => {
                     display={{ base: 'none', md: 'flex' }}
                 >
                     <Box pr={4}>
-                        <Link>ユーザー一覧</Link>
+                        <Link onClick={onClickUserManagement}>
+                            ユーザー一覧
+                        </Link>
                     </Box>
-                    <Link>設定</Link>
+                    <Link onClick={onClickSetting}>設定</Link>
                 </Flex>
                 <MenuIconButton onOpen={onOpen} />
             </Flex>
-            <MenuDrawer onClose={onClose} isOpen={isOpen} />
+            <MenuDrawer
+                onClose={onClose}
+                isOpen={isOpen}
+                onClickHome={onClickHome}
+                onClickUserManagement={onClickUserManagement}
+                onClickSetting={onClickSetting}
+            />
         </>
     );
 });
