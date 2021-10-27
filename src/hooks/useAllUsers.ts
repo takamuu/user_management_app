@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+/* eslint-disable arrow-body-style */
 import { useCallback, useState } from 'react';
 import axios from 'axios';
 
@@ -7,7 +9,7 @@ import { useMessage } from './useMessage';
 export const useAllUsers = () => {
   const { showMessage } = useMessage();
   const [loading, setLoading] = useState<boolean>(false);
-  const [users, setUsers] = useState<Array<User>>();
+  const [users, setUsers] = useState<Array<User>>([]);
 
   const getUsers = useCallback(() => {
     setLoading(true);
@@ -23,6 +25,6 @@ export const useAllUsers = () => {
       .finally(() => {
         setLoading(false);
       });
-  }, []);
+  }, [showMessage]);
   return { getUsers, loading, users };
 };

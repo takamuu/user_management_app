@@ -24,7 +24,10 @@
   "rules": {
     "import/prefer-default-export": "off",
     "react-hooks/exhaustive-deps": "error",
-    "@typescript-eslint/explicit-module-boundary-types": "off"
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "arrow-body-style": ["error", "always"],
+    "react/react-in-jsx-scope": 0,
+    "react/jsx-uses-react": 0
   },
   "overrides": [
     {

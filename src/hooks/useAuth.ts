@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+/* eslint-disable arrow-body-style */
 /* eslint-disable import/prefer-default-export */
 import { useCallback, useState } from 'react';
 import axios from 'axios';
@@ -12,32 +14,35 @@ export const useAuth = () => {
 
   const [loading, setLoading] = useState(false);
 
-  const login = useCallback((id: string) => {
-    setLoading(true);
+  const login = useCallback(
+    (id: string) => {
+      setLoading(true);
 
-    axios
-      .get<User>(`https://jsonplaceholder.typicode.com/users/${id}`)
-      .then((res) => {
-        if (res.data) {
-          showMessage({
-            title: 'ログインしました',
-            status: 'success',
-          });
-          history.push('/home');
-        } else {
-          showMessage({
-            title: 'ユーザーが見つかりません',
-            status: 'error',
-          });
-        }
-      })
-      .catch(() =>
-        showMessage({
-          title: 'ログインできません',
-          status: 'error',
+      axios
+        .get<User>(`https://jsonplaceholder.typicode.com/users/${id}`)
+        .then((res) => {
+          if (res.data) {
+            showMessage({
+              title: 'ログインしました',
+              status: 'success',
+            });
+            history.push('/home');
+          } else {
+            showMessage({
+              title: 'ユーザーが見つかりません',
+              status: 'error',
+            });
+          }
         })
-      )
-      .finally(() => setLoading(false));
-  }, []);
+        .catch(() =>
+          showMessage({
+            title: 'ログインできません',
+            status: 'error',
+          })
+        )
+        .finally(() => setLoading(false));
+    },
+    [history, showMessage]
+  );
   return { login, loading };
 };
